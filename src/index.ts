@@ -1,4 +1,4 @@
 
-import cssfabric from "./scripts/cssfabric"
+import cssfabric from "./lib/scripts/cssfabric"
 
 export default cssfabric

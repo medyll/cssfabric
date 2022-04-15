@@ -1,24 +1,23 @@
 // ## WIP
 
-const gulp = require("gulp"),
-    jsonTransform = require("gulp-json-transform"),
-    cache = require("gulp-cached"),
-    gulpSass = require("gulp-sass"),
-    gulFileList = require("gulp-filelist"),
-    minifyCss = require("gulp-minify-css"),
-    fs = require("fs"),
-    gulpRename = require("gulp-rename"),
-    gulpDownload = require("gulp-download-stream"),
-    gulpConcat = require("gulp-concat-util"),
-    gulpJsBeautifier = require('gulp-jsbeautifier'),
-    modifyFile = require("gulp-modify-file"),
-    json2md = require("json2md"),
-    gulpIgnore = require("gulp-ignore");
+import gulp from "gulp";
+import jsonTransform from "gulp-json-transform"
+import cache from "gulp-cached"
+import gulpSass from "gulp-sass"
+import gulFileList from "gulp-filelist"
+import minifyCss from "gulp-minify-css"
+import gulpRename from "gulp-rename"
+import gulpDownload from "gulp-download-stream"
+import gulpConcat from "gulp-concat-util"
+import gulpJsBeautifier from 'gulp-jsbeautifier'
+import modifyFile from "gulp-modify-file"
+import json2md from "json2md"
+import gulpIgnore from "gulp-ignore"
+import sass from "sass"
+import {cssFabricSassConf} from "./cssfabric.sass.js";
 
+gulpSass.compiler = sass;
 
-gulpSass.compiler = require("sass");
-
-const fabricConfig = require("./cssfabric.json");
 
 const {
     fabricRootDir,
@@ -26,7 +25,7 @@ const {
     fabricConfDir,
     fabricModuleDir,
     fabricGeneratedDir,
-} = fabricConfig;
+} = cssFabricSassConf;
 
 const doFabric = {
     /**
@@ -104,7 +103,7 @@ const doFabric = {
                         }
                         // si keys
                         if (attributeValue?.keys) {
-                            console.log(title,'keys isArrayOfType ', isArrayOfType(attributeValue.keys))
+                            console.log(title, 'keys isArrayOfType ', isArrayOfType(attributeValue.keys))
                             switch (isArrayOfType(attributeValue.keys)) {
                                 case "strings":
                                 case "numbers":
@@ -122,7 +121,7 @@ const doFabric = {
                             // si typeof level array => array of string or of arrays
                             if (Array.isArray(attributeValue.levels)) {
                                 // if [][]
-                                console.log(title,'levels isArrayOfType ', isArrayOfType(attributeValue.levels))
+                                console.log(title, 'levels isArrayOfType ', isArrayOfType(attributeValue.levels))
                                 switch (isArrayOfType(attributeValue.levels)) {
                                     case "strings":
                                     case "numbers":
@@ -178,8 +177,8 @@ const doFabric = {
         function isArrayOfType(arr) {
             let ret = '';
 
-            if(!Array.isArray(arr)){
-                console.log(Array.isArray(arr),{arr})
+            if (!Array.isArray(arr)) {
+                console.log(Array.isArray(arr), {arr})
             }
             if (arr.every(x => Array.isArray(x))) ret = 'arrays'
             if (arr.every(x => typeof x === 'string')) ret = 'strings'
@@ -404,7 +403,7 @@ function task_varsExport(cb) {
     return cb();
 }
 
-function task_readme(cb) {
+export function task_readme(cb) {
     gulp
         .src(fabricGeneratedDir + "/*.json")
         .pipe(
@@ -541,7 +540,7 @@ function task_sass2css(cb) {
     );
 }
 
-function taskDownload(cb) {
+export function taskDownload(cb) {
     return gulpDownload(
         "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     )
@@ -551,7 +550,7 @@ function taskDownload(cb) {
         });
 }
 
-function watchSassTask(cb) {
+export function watchSass(cb) {
     gulp.watch(
         fabricModuleDir + "/**/*.scss",
         gulp.series(task_sass2css, task_mergeInclude, task_varsExport)
@@ -560,12 +559,12 @@ function watchSassTask(cb) {
 }
 
 // todo change to styleDir
-function watchInclude(cb) {
+export function watchInclude(cb) {
 
     cb();
 }
 
-function watchReadme(cb) {
+export function watchReadme(cb) {
     gulp.watch(
         [fabricModuleDir, "!" + fabricModuleDir + "/**/_*.scss"],
         task_readme
@@ -573,27 +572,3 @@ function watchReadme(cb) {
 
     cb();
 }
-
-function watchExportVars(cb) {
-    gulp.watch(fabricRootDir, gulp.series(task_varsExport));
-
-    cb();
-}
-
-function watchCssExportVars(cb) {
-    gulp.watch(fabricModuleDir, gulp.series(task_cssVarsExport));
-
-    cb();
-}
-
-// only one called by npm
-exports.watchSass = watchSassTask;
-
-exports.watchInclude = watchInclude;
-exports.watchReadme = watchReadme;
-exports.watchExportVars = watchExportVars;
-
-exports.watchCssExport = watchCssExportVars;
-
-exports.taskDownload = taskDownload;
-exports.task_readme = task_readme;
