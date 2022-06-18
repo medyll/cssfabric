@@ -1,50 +1,45 @@
 @use "../_utils";
 @use "sass:color";
-@use '../../cssfabric/modules/color/color-vars';
-@use '../../cssfabric/modules/color/color-build'  as colorBuild;
-@use "../../cssfabric/modules/box/box-vars" as box;
+@use "../../cssfabric/modules/color/color-vars";
+@use "../../cssfabric/modules/color/color-build" as colorBuild;
 @use "../../cssfabric/modules/box/box-build" as boxBuild;
 @use "../../cssfabric/modules/theme/theme-build" as themeBuild;
 @use "../../cssfabric/modules/text/text-build" as textBuild;
 
-@import 'cssfabric-config';
+@import "cssfabric-config";
 
-$themes: map-get($cssfabric-config, themes) !default;
-$theme-light: map-get($themes, light) !default;
-$theme-dark: map-get($themes, dark) !default;
-
-/* cssFabric vars yes */
+/* cssFabric vars */
 :root {
-  @include themeBuild.themeCssVars($theme-color-primary,$theme-color-secondary,$theme-color-tertiary);
+  /* --theme-color-primary|*-alpha-|* */
+  @include themeBuild.themeCssVars($theme-color-primary, $theme-color-secondary, $theme-color-tertiary);
+
   @include colorBuild.buildColorCssVars();
   /* boxes */
   @include boxBuild.pmbCssVars();
   /* text */
   @include textBuild.textCssVars();
-
   /* shadows */
   @include boxBuild.shadowsCssVars();
   /* themes */
-  @include themeBuild.themeBaseVars($theme-light);
+  @include themeBuild.themeBaseVars($theme-color-foreground, $theme-color-background, $theme-color-paper);
 
-  --theme-color-border:  #{color.change($theme-color-foreground,$alpha:0.2)};
-  &,[data-theme="light"] {
-    @include themeBuild.themeBaseVars($theme-light);
+  --theme-color-border: #{color.change($theme-color-foreground, $alpha: 0.2)};
+  &,
+  [data-theme="light"] {
+    @include themeBuild.themeBaseVars($theme-color-foreground, $theme-color-background, $theme-color-paper);
 
-    --theme-color-border: #{color.change($theme-color-foreground,$alpha:0.2)};
+    --theme-color-border: #{color.change($theme-color-foreground, $alpha: 0.2)};
     --theme-color-overlay: rgba(208, 191, 151, 0.2);
   }
 
   [data-theme="dark"] {
-    @include themeBuild.themeBaseVars($theme-dark);
+    @include themeBuild.themeBaseVars(
+      $theme-dark-color-foreground,
+      $theme-dark-color-background,
+      $theme-dark-color-paper
+    );
 
-    --theme-color-border:  #{color.change($theme-dark-color-foreground,$alpha:0.3)};
+    --theme-color-border: #{color.change($theme-dark-color-foreground, $alpha: 0.3)};
     --theme-color-overlay: rgba(255, 255, 255, 0.1);
   }
 }
-
-
-
-
-
-

@@ -32,25 +32,26 @@ $menu_dropdown_close: map-get($menu-config, menu_dropdown_close);
         &-#{$orientation_key} {
           padding: 0;
           margin: 0;
-          line-height: 1rem;
+          line-height: var(--box-density-2);
 
           & li.#{$menu_item_class_name},
           li {
             display: block;
-            margin: 0 1rem;
+            margin: 0;
             width: auto;
             transition-property: all;
-            transition-duration: 0.5s;
-            padding: 1rem;
+            transition-duration: 0.15s;
+            padding: var(--box-density-1);
+            border-left: 1px solid var( --theme-color-border );
 
             &:hover {
-              border-radius: 4px;
+              border-radius: var(--radius-small);
               background-color: #ededed;
-              // text-align: center;
+              border-left: 1px solid var(--theme-color-primary);
             }
 
             &.active {
-              border-radius: 4px;
+              border-radius: var(--radius-small);
               background-color: #ededed;
               font-weight: bold;
             }
@@ -76,6 +77,7 @@ $menu_dropdown_close: map-get($menu-config, menu_dropdown_close);
 
         }
       }
+
       &-h {
         max-width: 100%;
         display: inline-flex;
@@ -96,7 +98,6 @@ $menu_dropdown_close: map-get($menu-config, menu_dropdown_close);
 }
 
 $menu-border-color: red;
-
 
 
 /* & li.#{$menu_item_class_name}{

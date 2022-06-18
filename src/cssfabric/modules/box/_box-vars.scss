@@ -87,7 +87,6 @@ $box-config: (
         )
 );
 
-
 $box-docs: (
         attributes:(
                 padding: (
@@ -111,6 +110,7 @@ $box-docs: (
                         levels: ("_":utils.getObjectKeys(utils.getBoxIterator($box-sizes-border-config, $box-border-unit-config, $box-unit-border-size-config))),
                         about: "border properties for html elements"
                 ),
+                radius : (tag: radiusGuy),
                 shadow: (
                         tag: cssfabric-config.$box-shadow-shorthand,
                         values: utils.getShadowIterator($shadow-factors, $box-shadows-steps),

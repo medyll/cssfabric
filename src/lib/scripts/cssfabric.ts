@@ -1,4 +1,4 @@
-import jsonConfig              from "../_generated/export.variables.json" ;
+import jsonConfig              from "../_generated/cssFabric.vars.json" ;
 import cssfabricClassNames from "./cssfabricClassNames";
 
 export type IFabricConfModulePart = Record<string, any>;

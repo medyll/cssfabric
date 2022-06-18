@@ -1,6 +1,6 @@
 import cssfabric from '../lib/scripts/cssfabric';
 
-const urlModule         = 'cssfabric-modules';
+export const urlModule  = 'cssfabric-modules';
 const pageDocsName      = 'docs';
 const pageDemoName      = 'demo';
 const pageDemoClassName = 'classnames';

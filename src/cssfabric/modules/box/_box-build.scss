@@ -27,6 +27,8 @@ $box-border-shorthand-config: cssfabric-config.$box-border-shorthand !default;
 $box-padding-shorthand-config: cssfabric-config.$box-padding-shorthand !default;
 $box-margin-shorthand-config: cssfabric-config.$box-margin-shorthand !default;
 
+$box-gap-shorthand: cssfabric-config.$box-gap-shorthand !default;
+
 $box-shadows-steps: box.$box-shadows-steps !default;
 $box-shadows-step-multiplier: box.$box-shadows-step-multiplier !default;
 
@@ -57,6 +59,11 @@ $densities-ratios : cssfabric-config.$densities-ratios;
   @each $preset, $preset-value in $box-unit-presets{
     $value: ($preset-value * $box-unit-size-config) + $box-unit-config;
     --box-density-preset-#{$preset}: #{$value};
+  }
+
+  // radius
+  @each $radius, $value in $box-radius{
+    --radius-#{$radius}: #{$value};
   }
 
   // $ratios: tiny small medium large full
@@ -140,6 +147,15 @@ $densities-ratios : cssfabric-config.$densities-ratios;
   }
 }
 
+@mixin box-gap($mq_key) {
+  $shorthand: if($mq_key, #{$box-gap-shorthand}-#{$mq_key}, #{$box-gap-shorthand});
+  // presets
+  @each $preset, $preset-value in $box-unit-presets{
+    .#{$shorthand}-#{$preset}{
+      #{$shorthand}: var(--box-density-preset-#{$preset});
+    }
+  }
+}
 // pmb as padding margin border property
 // padding-tiny padding-small padding
 @mixin padding-margin-border($mq_key) {
@@ -284,4 +300,5 @@ $densities-ratios : cssfabric-config.$densities-ratios;
   @include placement($mq_key);
   @include radius($mq_key);
   @include shadows($mq_key);
+  @include box-gap($mq_key);
 }

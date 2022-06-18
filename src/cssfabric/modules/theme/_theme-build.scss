@@ -7,17 +7,12 @@
 
 // COLOR THEME
 $moduleNameShort: map-get($theme-config, moduleNameShort);
-//
-$color-themes: map-get($theme-config, color-default-config);
+// 
 $theme-levels: map-get($theme-config, theme-level-config);
 $theme-properties-apply-config: map-get($theme-config, theme-properties-apply-config);
 
 
 $declinations-config: map-get($theme-config, declinations-config);
-
-$themes: map-get($cssfabric-config, themes) !default;
-$theme-light: map-get($themes, light) !default;
-$theme-dark: map-get($themes, dark) !default;
 
 @mixin fabric_theme($mq_size_key: null) {
   // loop on each color grades primary secondary tertiary
@@ -39,20 +34,64 @@ $theme-dark: map-get($themes, dark) !default;
       }
     }
   }
+  .theme-text-color, .theme-foreground-color {
+    color: var(--theme-color-text);
+  }
+
+  .theme-foreground-color-alpha {
+    color: var(--theme-color-foreground-alpha);
+  }
+  .theme-foreground-color-alpha-low {
+    color: var(--theme-color-foreground-alpha-low);
+  }
+  .theme-foreground-color-alpha-high {
+    color: var(--theme-color-foreground-alpha-high);
+  }
+
+  .theme-bg{
+    background-color: var(--theme-color-background);
+  }
+  .theme-bg-alpha{
+    background-color: var(--theme-color-background-alpha);
+  }
+  .theme-bg-alpha-low{
+    background-color: var(--theme-color-background-alpha-low);
+  }
+  .theme-bg-alpha-high{
+    background-color: var(--theme-color-background-alpha-high);
+  }
+
+  .theme-bg-paper{
+    background-color: var(--theme-color-paper);
+  }
+
+  .theme-bg-paper-alpha{
+    background-color: var(--theme-color-paper-alpha);
+  }
+
+  .theme-bg-paper-alpha-low{
+    background-color: var(--theme-color-paper-alpha-low);
+  }
+
+  .theme-bg-paper-alpha-high{
+    background-color: var(--theme-color-paper-alpha-high);
+  }
+
 }
 
-@mixin themeBaseVars($theme:$theme-light) {
+@mixin themeBaseVars($theme-color-foreground,$theme-color-background,$theme-color-paper) {
   /* theme base colors*/
-  --theme-color-text: #{map-get($theme, foreground)};
-  --theme-color-foreground: #{map-get($theme, foreground)};
-  @include utils.alphaTize(--theme-color-foreground, map-get($theme, foreground));
-  --theme-color-background: #{map-get($theme, background)};
-  @include utils.alphaTize(--theme-color-background, map-get($theme, foreground));
-  --theme-color-paper: #{map-get($theme-light, paper)};
-  @include utils.alphaTize(--theme-color-paper, map-get($theme, paper));
+  --theme-color-text: #{$theme-color-foreground};
+  --theme-color-foreground: #{$theme-color-foreground};
+
+  @include utils.alphaTize(--theme-color-foreground, $theme-color-foreground);
+  --theme-color-background: #{$theme-color-background};
+  @include utils.alphaTize(--theme-color-background, $theme-color-background);
+  --theme-color-paper: #{$theme-color-paper};
+  @include utils.alphaTize(--theme-color-paper, $theme-color-paper);
 }
 
-
+ /* primary,secondary with alphas */
 @mixin themeCssVars($theme-color-primary,$theme-color-secondary,$theme-color-tertiary) {
 
   /* theme primary colors*/

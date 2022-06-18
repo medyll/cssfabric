@@ -1,42 +1,34 @@
 <script context="module" lang="ts">
-
   export const prerender = true;
 </script>
 
 <script lang="ts">
   import {fabricNavigation} from '../scripts/utils';
-
+  import github from "svelte-highlight/styles/github";
   const cssfabricModules = fabricNavigation.getActiveLinks();
   $: console.log({cssfabricModules});
 </script>
 <svelte:head>
     <title>cssFabric home</title>
-
+    {@html github}
 </svelte:head>
-<div class={"flex-v  flex-align-center h-full theme-color-background  overflow-auto  "}>
-
-    <h1 class={"flex-v flex-align-center flex-align-middle scale-h-16"}>
-        cssfabric
-    </h1>
-    <h6>actually in early version</h6>
-    <div class={"flex-main flex-align-middle scale-w-sm-full scale-w-lg-32 scale-w-64 pad-all"}>
-        <div title={"a css framework"}>
-            <p>
-                <strong>cssfabric</strong> is another css framework, semantically driven and fully responsive<br/>
-                it's goal is to permit you to achieve of all your design task, from single page applications to frontend web sites
-            </p>
-        </div>
-        <p title={"with some css in"}>
+<div class={"flex-main flex-align-middle scale-w-sm-full scale-w-lg-32 scale-w-64 pad-all"}>
+    <div title={"a css framework"}>
+        <p>
+            <strong>cssfabric</strong> is a css framework built around css properties<br/>
+            it's goal is to permit you to achieve of all your design task, from single page applications to frontend web sites
         </p>
-        <div class={"flex-h flex-wrap flex-align-center"}>
-            {#each Object.values(cssfabricModules) as key, name }
-                <div class={"pad-4 marg-4   scale-w-8 scale-h-8 flex-v flex-align-middle text-center bg-themed-gray-200 shad-4"}>
-                    <a href={fabricNavigation.getModuleDemoPage(key)}>
-                        <span>{`${key}`}</span>
-                    </a>
-                </div>
-            {/each}
-        </div>
+    </div>
+    <p title={"with some css in"}>
+    </p>
+    <div class={"flex-h flex-wrap flex-align-center"}>
+        {#each Object.values(cssfabricModules) as key, name }
+            <div class={"pad-4 marg-4   scale-w-8 scale-h-8 flex-v flex-align-middle text-center bg-themed-gray-200 shad-4"}>
+                <a href={fabricNavigation.getModuleDemoPage(key)}>
+                    <span>{`${key}`}</span>
+                </a>
+            </div>
+        {/each}
     </div>
 </div>
 

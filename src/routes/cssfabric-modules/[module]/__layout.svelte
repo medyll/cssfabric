@@ -1,59 +1,75 @@
-<script lang="ts">
-    import HeaderSiteTitle from "../../../components/HeaderSiteTitle.svelte";
-    import Header from "../../../components/Header.svelte";
-    import InnerMenu from "../../../components/InnerMenu.svelte";
-    import SubHeader from "../../../components/SubHeader.svelte";
-    import {fabricNavigation} from '../../../scripts/utils';
-    import cssfabric from '../../../lib/scripts/cssfabric';
+<svelte:head>
 
-    export let moduleTag  = '';
-    export let modulePage = '';
-
-    const links: string[] = fabricNavigation.getActiveLinks();
-
-    let DynamicComponent;
-    let tagProperties: Record<string, any> = {};
-
-    let staticModule: string = moduleTag;
-    let staticAction: string = '';
-
-    $: tagProperties = cssfabric.getModuleMetaData(moduleTag);
-    $: staticAction = modulePage;
+    <title>{staticModule} {staticAction} cssfabric</title>
+</svelte:head>
+<script context="module" lang="ts">
+  export const prerender = true;
+  /** @type {import('./modules/[module]/[page]').Load} */
+  export async function load({params, fetch, session, stuff}) {
+    console.log(params)
+    // console.log(params, fetch, session, stuff);
+    return {
+      status: 200,
+      props : {
+        moduleTag : params.module,
+        modulePage: params.page
+      }
+    };
+  }
 </script>
 
-<div class={"flex flex-v   h-full content-start overflow-auto"}>
-    <div class={"w-full w-sm-main theme-bg-primary-light"}>
-        <HeaderSiteTitle
-                description={"cssFabric is an alpha cssFabric"}
-                title="cssfabric"
-                title_tag={"just.fabric.it"}
-        />
-        <div class={" dsp-none"}>
-            <div class={"dsp-none dsp-sm-block"}>sm</div>
-            <div class={"dsp-md-block dsp-none "}>md</div>
-            <div class={"dsp-lg-block dsp-none"}>lg</div>
-            <div class={"dsp-none dsp-xl-block dsp-none"}>xl</div>
-            <div class={"dsp-none dsp-xxl-block dsp-none"}>xxl</div>
-            <div class={"dsp-none dsp-xxxl-block dsp-none"}>xxxl</div>
+<script lang="ts">
+  import cssfabric from '../../../lib/scripts/cssfabric';
+  import {fabricNavigation} from '../../../scripts/utils';
+  import InnerMenu from '../../../components/InnerMenu.svelte';
+  import SubHeader from '../../../components/SubHeader.svelte';
+  import Header from '../../../components/Header.svelte';
+
+  export let moduleTag  = '';
+  export let modulePage = '';
+
+  const links: string[] = fabricNavigation.getActiveLinks();
+
+  let tagProperties: Record<string, any> = {};
+
+  let staticModule: string = moduleTag;
+  let staticAction: string = '';
+
+  $: tagProperties = cssfabric.getModuleMetaData(moduleTag);
+  $: staticAction = modulePage;
+
+</script>
+<Header
+        description={tagProperties.description}
+        tag={"fabric.css." + tagProperties.title}
+        title={"." + tagProperties.title}
+/>
+<div class={"flex  flex-xl-v flex-h marg-t-2"}>
+    <div class={"marg-t-2 marg-lg-l-4 pad"}>
+        <div class="">
+            <ul class={"menu-xl-h menu-v menu-small shad-8"}>
+                <li class={(modulePage==='demo')? 'active':''}>
+                    <a href={fabricNavigation.getModuleDemoPage(moduleTag)}>
+                        <a>Demo</a>
+                    </a>
+                </li>
+                <li class={(modulePage==='classnames')? 'active':''}>
+                    <a href={fabricNavigation.getModuleClassNamesPage(moduleTag)}>
+                        <a>Classnames</a>
+                    </a>
+                </li>
+                <li class={(modulePage==='docs')? 'active':''}>
+                    <a href={fabricNavigation.getModuleDocsPage(moduleTag)}>
+                        <a>Docs</a>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-    <div class={"flex flex-lg-v flex-h  h-full "}>
-        <aside class={"w-lg-full w-16"}>
-            <nav class={"pad-all-8 pad-lg-2"}>
-                <ul class={"menu-lg-h menu-v"}>
-                    {#each Object.values(links) as key}
-                        <!--{    css = (staticModule === key) ? 'active' : '';}-->
-                        <li class={"menu-item " }>
-                            <a href={fabricNavigation.getModuleDemoPage(key)}>
-                                <span>{`${key}`}</span>
-                            </a>
-                        </li>
-                    {/each}
-                </ul>
-            </nav>
-        </aside>
-        <section class={"flex-main pad-all-4 "}>
-            <slot></slot>
-        </section>
+    <div class={"pad-l-4 flex-main"}>
+        <SubHeader title={staticModule + '.' + staticAction}/>
+        <div>
+            <slot module={staticModule} ></slot>
+        </div>
     </div>
 </div>
