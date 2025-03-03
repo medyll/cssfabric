@@ -1,3 +1,4 @@
+@use "sass:map";
 @use 'text-vars';
 @use "../cssfabric-config";
 @use '../../_utils';
@@ -5,26 +6,26 @@
 
 // load general config variables
 $cssfabric-config: cssfabric-config.$cssfabric-config;
-$sep: map-get($cssfabric-config, sep);
+$sep: map.get($cssfabric-config, sep);
 
 $text-config: text-vars.$text-config;
-$moduleName: map-get($text-config, moduleName);
-$moduleNameShort: map-get($text-config, moduleNameShort);
+$moduleName: map.get($text-config, moduleName);
+$moduleNameShort: map.get($text-config, moduleNameShort);
 
-$cssProps: map-get($text-config, cssProps);
-$color-schemes: map-get($text-config, scheme);
-$color-palette-props: map-get($text-config, palette);
+$cssProps: map.get($text-config, cssProps);
+$color-schemes: map.get($text-config, scheme);
+$color-palette-props: map.get($text-config, palette);
 
-$gray-list: map-get($text-config, gray);
+$gray-list: map.get($text-config, gray);
 
-$textTransform: map-get($cssProps, textTransform);
-$fontWeight: map-get($cssProps, fontWeight);
-$textAlign: map-get($cssProps, textAlign);
+$textTransform: map.get($cssProps, textTransform);
+$fontWeight: map.get($cssProps, fontWeight);
+$textAlign: map.get($cssProps, textAlign);
 
-$font-size-unit-config: map-get($text-config, font-size-unit-config) !default;
-$font-size-h-steps: map-get($text-config, title-size-declination-config) !default;
-$font-size-h-max-config: map-get($text-config, font-sizes-h1-rem-config) !default;
-$font-size-h-min-config: map-get($text-config, font-size-h-min-rem-config) !default;
+$font-size-unit-config: map.get($text-config, font-size-unit-config) !default;
+$font-size-h-steps: map.get($text-config, title-size-declination-config) !default;
+$font-size-h-max-config: map.get($text-config, font-sizes-h1-rem-config) !default;
+$font-size-h-min-config: map.get($text-config, font-size-h-min-rem-config) !default;
 
 $size-diff: $font-size-h-max-config - $font-size-h-min-config;
 $steps: $font-size-h-steps - 1;

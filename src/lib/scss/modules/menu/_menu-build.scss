@@ -1,22 +1,23 @@
+@use "sass:map";
 @use 'menu-vars';
 @use '../../_utils';
 
 $menu-config: menu-vars.$menu-config;
 
 // read variables
-$menu_class_name: map-get($menu-config, menu_class_name);
-$menu_class_name_short: map-get($menu-config, menu_class_name_short);
+$menu_class_name: map.get($menu-config, menu_class_name);
+$menu_class_name_short: map.get($menu-config, menu_class_name_short);
 
-$menu_item_class_name: map-get($menu-config, menu_item_class_name);
-$menu_item_class_name_short: map-get($menu-config, menu_item_class_name_short);
+$menu_item_class_name: map.get($menu-config, menu_item_class_name);
+$menu_item_class_name_short: map.get($menu-config, menu_item_class_name_short);
 
-$orientations: map-get($menu-config, orientations);
-$menu_item_disabled_tag: map-get($menu-config, menu_item_disabled_tag);
-$menu_item_selected_tag: map-get($menu-config, menu_item_selected_tag);
+$orientations: map.get($menu-config, orientations);
+$menu_item_disabled_tag: map.get($menu-config, menu_item_disabled_tag);
+$menu_item_selected_tag: map.get($menu-config, menu_item_selected_tag);
 
-$menu_dropdown_tag: map-get($menu-config, menu_dropdown_tag);
-$menu_dropdown_open: map-get($menu-config, menu_dropdown_open);
-$menu_dropdown_close: map-get($menu-config, menu_dropdown_close);
+$menu_dropdown_tag: map.get($menu-config, menu_dropdown_tag);
+$menu_dropdown_open: map.get($menu-config, menu_dropdown_open);
+$menu_dropdown_close: map.get($menu-config, menu_dropdown_close);
 
 @mixin buildMenu($mq_key) {
   $class_name: if($mq_key, #{$menu_class_name}-#{$mq_key}, #{$menu_class_name});

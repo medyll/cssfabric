@@ -1,18 +1,19 @@
+@use "sass:map";
 @use 'table-vars';
 @use '../../_utils';
 
 $table-config: table-vars.$table-config;
 
-$TABLE_PREFIX: map-get($table-config, table_class_name);
-$TABLE_PREFIX_SHORT: map-get($table-config, table_class_name_short);
+$TABLE_PREFIX: map.get($table-config, table_class_name);
+$TABLE_PREFIX_SHORT: map.get($table-config, table_class_name_short);
 
-$table_bg_color_head: map-get($table-config, table-bg-color-head);
-$table_bg_color_strip_main: map-get($table-config, table-bg-color-strip-main);
-$table_bg_color_strip_second: map-get($table-config, table-bg-color-strip-second);
+$table_bg_color_head: map.get($table-config, table-bg-color-head);
+$table_bg_color_strip_main: map.get($table-config, table-bg-color-strip-main);
+$table_bg_color_strip_second: map.get($table-config, table-bg-color-strip-second);
 
-$table_border_color_header: map-get($table-config, table-border-color-header);
-$table_border_color_main: map-get($table-config, table-border-color-main);
-$table_border_color_second: map-get($table-config, table-border-color-second);
+$table_border_color_header: map.get($table-config, table-border-color-header);
+$table_border_color_main: map.get($table-config, table-border-color-main);
+$table_border_color_second: map.get($table-config, table-border-color-second);
 
 //  .table-bg-strip-2
 @mixin bg-strip($prefix_short,$nb_strips) {

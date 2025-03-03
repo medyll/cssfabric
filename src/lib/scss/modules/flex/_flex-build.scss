@@ -1,3 +1,4 @@
+@use "sass:map";
 // load scss config file
 @use '../../_utils';
 @use '../cssfabric-config' as cssfabric-vars;
@@ -6,18 +7,18 @@
 $flex-config: flex-vars.$flex-config;
 $cssfabric-config: cssfabric-vars.$cssfabric-config;
 
-$sep: map-get($cssfabric-config, sep);
+$sep: map.get($cssfabric-config, sep);
 // read variables
-$grid-code: map-get($flex-config, moduleNameShort);
-$grid-h: map-get($flex-config, horCode);
-$grid-v: map-get($flex-config, vertCode);
+$grid-code: map.get($flex-config, moduleNameShort);
+$grid-h: map.get($flex-config, horCode);
+$grid-v: map.get($flex-config, vertCode);
 
-$cssProps: map-get($flex-config, cssProps);
-$cssItemsProps: map-get($flex-config, cssItemsProps);
+$cssProps: map.get($flex-config, cssProps);
+$cssItemsProps: map.get($flex-config, cssItemsProps);
 
-$gridFullWidth: map-get($flex-config, gridFullWidth);
+$gridFullWidth: map.get($flex-config, gridFullWidth);
 
-$grow-shrink-steps: map-get($flex-config, grow-shrink-steps);
+$grow-shrink-steps: map.get($flex-config, grow-shrink-steps);
 
 $grid-code-sep: #{$grid-code}#{$sep};
 
@@ -126,14 +127,14 @@ $grid-code-sep: #{$grid-code}#{$sep};
 
   // wrap rules
   .#{$grid-code} {
-    @each $fabricRule, $value in map-get($cssProps, flexWrap) {
+    @each $fabricRule, $value in map.get($cssProps, flexWrap) {
       @include utils.fabricAttributes('&'+$sep, $fabricRule, 'flex-wrap', $value);
     }
   }
 
   // align-self rules for children */
   .self {
-    @each $fabricRule, $value in map-get($cssItemsProps, self) {
+    @each $fabricRule, $value in map.get($cssItemsProps, self) {
       @include utils.fabricAttributes('&-', $fabricRule, 'align-self', $value);
     }
   }

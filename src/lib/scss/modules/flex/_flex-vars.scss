@@ -1,3 +1,4 @@
+@use "sass:map";
 @use '../../utils';
 
 
@@ -71,13 +72,13 @@ $flex-docs: (// add align-middle non generated className // grow + shrink
                         keys: (v, h),
                         classNames: (
                                 align: $_grid-align,
-                                grid:utils.getObjectKeys(map-get($_cssProps, flexWrap)), // add inline !
+                                grid:utils.getObjectKeys(map.get($_cssProps, flexWrap)), // add inline !
                         ),
                         about: "a classic flex grid system, and hey, it gets height !"
                 ),
                 self:(
                         tag: self,
-                        keys: utils.getObjectKeys(map-get($_cssItemsProps, self)),
+                        keys: utils.getObjectKeys(map.get($_cssItemsProps, self)),
                         about: "flex children specific classnames"
                 )
         )

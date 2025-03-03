@@ -6,14 +6,14 @@
 @use "./theme/theme-build" as themeBuild;
 @use "./text/text-build" as textBuild;
 
-@import "cssfabric-config";
+@use "cssfabric-config";
 
 /* 
 cssFabric vars
 */
 :root {
   /* --theme-color-primary|*-alpha-|*  */
-  @include themeBuild.themeCssVars($theme-color-primary, $theme-color-secondary, $theme-color-tertiary);
+  @include themeBuild.themeCssVars(cssfabric-config.$theme-color-primary, cssfabric-config.$theme-color-secondary, cssfabric-config.$theme-color-tertiary);
 
   @include colorBuild.buildColorCssVars();
   /* text */
@@ -27,20 +27,20 @@ cssFabric vars
 
   &,
   [data-theme="light"] {
-    @include themeBuild.themeBaseVars($theme-color-foreground, $theme-color-background, $theme-color-paper);
+    @include themeBuild.themeBaseVars(cssfabric-config.$theme-color-foreground, cssfabric-config.$theme-color-background, cssfabric-config.$theme-color-paper);
 
-    --theme-color-border: #{color.change($theme-color-foreground, $alpha: 0.2)};
+    --theme-color-border: #{color.change(cssfabric-config.$theme-color-foreground, $alpha: 0.2)};
     --theme-color-overlay: rgba($theme-color-foreground, 0.4);
   }
 
   [data-theme="dark"] {
     @include themeBuild.themeBaseVars(
-      $theme-dark-color-foreground,
-      $theme-dark-color-background,
-      $theme-dark-color-paper
+      cssfabric-config.$theme-dark-color-foreground,
+      cssfabric-config.$theme-dark-color-background,
+      cssfabric-config.$theme-dark-color-paper
     );
 
-    --theme-color-border: #{color.change($theme-dark-color-foreground, $alpha: 0.3)};
+    --theme-color-border: #{color.change(cssfabric-config.$theme-dark-color-foreground, $alpha: 0.3)};
     --theme-color-overlay: rgba($theme-dark-color-background, 0.4);
   }
 }

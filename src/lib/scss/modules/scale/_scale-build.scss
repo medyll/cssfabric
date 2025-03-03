@@ -1,3 +1,4 @@
+@use "sass:map";
 @use 'scale-vars';
 @use '../../_utils';
 @use "sass:math";
@@ -5,7 +6,7 @@
 $_cfg: utils.get_fabric_conf();
 
 // read variables
-$_has_dimensions_strict: map-get($_cfg, has_dimensions_strict);
+$_has_dimensions_strict: map.get($_cfg, has_dimensions_strict);
 $_has_dimensions_min: true; // map-get($_cfg, has_dimensions_min);
 $_has_dimensions_max: true; // map-get($_cfg, has_dimensions_max);
 
@@ -24,7 +25,7 @@ $scale-sizes-preset-config: scale-vars.$scale-sizes-preset-config;
 /// css dimensions rules builder
 @mixin scale-classname-builder($scale_prop, $size_code, $size_value, $media_query_code) {
 
-  $scale_prop_short: map-get($unit-tag-config, $scale_prop);
+  $scale_prop_short: map.get($unit-tag-config, $scale_prop);
 
   $tag: if(
                   $media_query_code,
@@ -60,7 +61,7 @@ $scale-sizes-preset-config: scale-vars.$scale-sizes-preset-config;
     @include scale-classname-builder(
                     $scale_prop,
                     $scale_shorthand,
-                    map-get($scale-sizes, $scale_shorthand),
+                    map.get($scale-sizes, $scale_shorthand),
                     $mq_size_key
     );
   }

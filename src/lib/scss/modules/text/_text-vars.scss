@@ -1,3 +1,4 @@
+@use "sass:map";
 @use '../../_utils';
 
 $cssProps: (
@@ -52,8 +53,8 @@ $text-config: (
                         none: none,
                         full: full-width
                 ),
-                fontWeight: map-get($cssProps, "font-weight"),
-                textAlign: map-get($cssProps, "text-align")
+                fontWeight: map.get($cssProps, "font-weight"),
+                textAlign: map.get($cssProps, "text-align")
         ),
         scheme: utils.get_fabric_conf(scheme),
         palette: utils.get_fabric_conf(palette),
@@ -64,19 +65,19 @@ $text-docs: (
         attributes: (
                 text-transform: (
                         tag: text,
-                        keys: utils.getObjectKeys(map-get($cssProps, text-transform))
+                        keys: utils.getObjectKeys(map.get($cssProps, text-transform))
                 ),
                 font-weight: (
                         tag: text,
-                        keys: utils.getObjectKeys(map-get($cssProps, font-weight))
+                        keys: utils.getObjectKeys(map.get($cssProps, font-weight))
                 ),
                 text-align: (
                         tag: text,
-                        keys: utils.getObjectKeys(map-get($cssProps, text-align))
+                        keys: utils.getObjectKeys(map.get($cssProps, text-align))
                 ),
                 text-shadow: (
                         tag: text-shad,
-                        keys: utils.getObjectKeys(map-get($cssProps, text-shadow))
+                        keys: utils.getObjectKeys(map.get($cssProps, text-shadow))
                 )
         ),
         classNames: (

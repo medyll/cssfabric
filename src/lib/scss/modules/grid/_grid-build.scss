@@ -1,3 +1,4 @@
+@use "sass:map";
 // load scss config file
 @use '../../_utils';
 @use '../cssfabric-config';
@@ -6,21 +7,21 @@
 $grid-config: grid-vars.$grid-config;
 $cssfabric-config: cssfabric-config.$cssfabric-config;
 
-$sep: map-get($cssfabric-config, sep);
+$sep: map.get($cssfabric-config, sep);
 // read variables
-$grid-code: map-get($grid-config, moduleNameShort);
-$grid-h: map-get($grid-config, horCode);
-$grid-v: map-get($grid-config, vertCode);
+$grid-code: map.get($grid-config, moduleNameShort);
+$grid-h: map.get($grid-config, horCode);
+$grid-v: map.get($grid-config, vertCode);
 
-$cssProps: map-get($grid-config, cssProps);
-$cssItemsProps: map-get($grid-config, cssItemsProps);
+$cssProps: map.get($grid-config, cssProps);
+$cssItemsProps: map.get($grid-config, cssItemsProps);
 
-$gridFullWidth: map-get($grid-config, gridFullWidth);
+$gridFullWidth: map.get($grid-config, gridFullWidth);
 
-$grow-shrink-steps: map-get($grid-config, grow-shrink-steps);
+$grow-shrink-steps: map.get($grid-config, grow-shrink-steps);
 
-$grid-max-cols: map-get($grid-config, grid-max-cols);
-$grid-max-rows: map-get($grid-config, grid-max-rows);
+$grid-max-cols: map.get($grid-config, grid-max-cols);
+$grid-max-rows: map.get($grid-config, grid-max-rows);
 
 $grid-code-sep: #{$grid-code}#{$sep};
 

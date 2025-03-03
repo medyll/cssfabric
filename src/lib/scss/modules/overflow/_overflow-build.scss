@@ -1,3 +1,4 @@
+@use "sass:map";
 
 @use 'overflow-vars';
 $overflow-config: overflow-vars.$overflow-config;
@@ -5,8 +6,8 @@ $overflow-config: overflow-vars.$overflow-config;
 @use '../../_utils'; 
 
 // read variables
-$overflow_props: map-get($overflow-config, overflow_props);
-$overflow_values: map-get($overflow-config, overflow_values);
+$overflow_props: map.get($overflow-config, overflow_props);
+$overflow_values: map.get($overflow-config, overflow_values);
 
 /* css overflow rules */
 @mixin buildOverflow($mq_size_key: null) {

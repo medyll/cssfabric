@@ -1,10 +1,10 @@
 @use '../../utils' as utils;
-@import "../cssfabric-config";
+@use "../cssfabric-config";
 
 
 
 $_declinations-config: (primary, secondary, tertiary);
-$themeii : (primary: $theme-color-primary, secondary:$theme-color-secondary, tertiary:$theme-color-tertiary);
+$themeii : (primary: cssfabric-config.$theme-color-primary, secondary:cssfabric-config.$theme-color-secondary, tertiary:cssfabric-config.$theme-color-tertiary);
 
 $_theme-levels: (light lighter dark darker complement invert);
 $_theme-properties-apply: (text, bg, border);
@@ -23,18 +23,18 @@ $theme-config: (
         moduleName: theme,
         moduleNameShort: theme,
         color-default-config: (
-                primary: $theme-color-primary,
-                secondary: $theme-color-secondary,
-                tertiary: $theme-color-tertiary,
-                foreground: $theme-color-foreground,
-                background: $theme-color-background,
-                paper: $theme-color-paper,
+                primary: cssfabric-config.$theme-color-primary,
+                secondary: cssfabric-config.$theme-color-secondary,
+                tertiary: cssfabric-config.$theme-color-tertiary,
+                foreground: cssfabric-config.$theme-color-foreground,
+                background: cssfabric-config.$theme-color-background,
+                paper: cssfabric-config.$theme-color-paper,
         ),
         declinations-config:$_declinations-config,
         theme-level-config:$_theme-levels,
         theme-properties-apply-config:$_theme-properties-apply,
         // primary secondary tertiary
-        color: utils.getThemeLevels($themeii, $theme-color-primary)
+        color: utils.getThemeLevels($themeii, cssfabric-config.$theme-color-primary)
 );
 
 $theme-docs: (attributes:(

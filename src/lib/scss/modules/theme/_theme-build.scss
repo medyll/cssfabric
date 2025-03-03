@@ -2,17 +2,18 @@
 @use "sass:color";
 @use "theme-vars";
 
-@import "theme-vars";
-@import "../cssfabric-config";
+@use "sass:map";
+@use "theme-vars";
+@use "../cssfabric-config";
 
 // COLOR THEME
-$moduleNameShort: map-get($theme-config, moduleNameShort);
+$moduleNameShort: map.get(theme-vars.$theme-config, moduleNameShort);
 // 
-$theme-levels: map-get($theme-config, theme-level-config);
-$theme-properties-apply-config: map-get($theme-config, theme-properties-apply-config);
+$theme-levels: map.get(theme-vars.$theme-config, theme-level-config);
+$theme-properties-apply-config: map.get(theme-vars.$theme-config, theme-properties-apply-config);
 
 
-$declinations-config: map-get($theme-config, declinations-config);
+$declinations-config: map.get(theme-vars.$theme-config, declinations-config);
 
 @mixin fabric_theme($mq_size_key: null) {
   // loop on each color grades primary secondary tertiary

@@ -1,3 +1,5 @@
+@use "sass:list";
+@use "sass:meta";
 @use "sass:string";
 @use "sass:map";
 @use "sass:math";
@@ -12,11 +14,11 @@
     @return cssfabric-config.$cssfabric-config;
   }
   @if $prop and not $val {
-    @return map-get(cssfabric-config.$cssfabric-config, $prop);
+    @return map.get(cssfabric-config.$cssfabric-config, $prop);
   }
   @if $val {
-    $in: map-get(cssfabric-config.$cssfabric-config, $prop);
-    @return map-get($in, $prop, $val);
+    $in: map.get(cssfabric-config.$cssfabric-config, $prop);
+    @return map.get($in, $prop, $val);
   }
 }
 
@@ -46,13 +48,13 @@
   */
   @each $red, $rt in $module-config {
     // list map string
-    @if (type_of($rt) == "string") {
+    @if (meta.type_of($rt) == "string") {
       $key: #{$module}-#{$red};
       --cssfabric-#{$key}: #{$rt};
     }
-    @if (type_of($rt) == "map") {
+    @if (meta.type_of($rt) == "map") {
       @each $rtkey, $rtval in $rt {
-        $type: type_of($rtval);
+        $type: meta.type_of($rtval);
         $key: #{$module}-#{$red}-#{$rtkey};
         $compval: is-map; // #{string.slice(#{#ss($rtval)}, 4)};
 
@@ -61,7 +63,7 @@
         --cssfabric-#{$key}: #{$comp};
       }
     }
-    @if (type_of($rt) == "list") {
+    @if (meta.type_of($rt) == "list") {
       $key: #{$module}-#{$red};
       --cssfabric-#{$key}: #{string.slice(#{#ss($rt)}, 4)};
     }
@@ -80,7 +82,7 @@
 
   @for $i from 0 through $steps {
 
-    $color: mix($gray-end, $gray-start, math.div($i , $steps) * 100%);
+    $color: color.mix($gray-end, $gray-start, math.div($i , $steps) * 100%);
 
     $gray-schemes: map.set($gray-schemes, #{($i+1) * 100}, $color);
   }
@@ -89,14 +91,14 @@
 }
 
 @function applyColorEffect($theme-level, $color) {
-  $switch-named: map-get(
+  $switch-named: map.get(
                   (
-                          light: lighten($color, 15%),
-                          lighter: lighten($color, 30%),
-                          dark: darken($color, 10%),
-                          darker: darken($color, 20%),
-                          complement: complement($color),
-                          invert: invert($color)
+                          light: color.adjust($color, $lightness: 15%),
+                          lighter: color.adjust($color, $lightness: 30%),
+                          dark: color.adjust($color, $lightness: -10%),
+                          darker: color.adjust($color, $lightness: -20%),
+                          complement: color.complement($color),
+                          invert: color.invert($color)
                   ),
                   $theme-level
   );
@@ -106,7 +108,7 @@
 
 @function getColorPropertyType($fabric-tag) {
   /** get property for #{$fabric-tag} */
-  @return map-get(
+  @return map.get(
                   (
                           color: color,
                           text: color,
@@ -148,11 +150,11 @@
 @function getShadowIterator($factors,$box-shadows-steps) {
   $out: ();
 
-  $v_fact: map-get($factors, v_fact);
-  $h_fact: map-get($factors, h_fact);
+  $v_fact: map.get($factors, v_fact);
+  $h_fact: map.get($factors, h_fact);
 
-  $v_fact_2: map-get($factors, v_fact_2);
-  $h_fact_2: map-get($factors, h_fact_2);
+  $v_fact_2: map.get($factors, v_fact_2);
+  $h_fact_2: map.get($factors, h_fact_2);
 
   $acc: 1;
 
@@ -188,7 +190,7 @@
 @function getObjectKeys($object) {
   $out: ();
   @each $key, $value in $object {
-    $out: append($out, $key);
+    $out: list.append($out, $key);
   }
 
   @return $out;

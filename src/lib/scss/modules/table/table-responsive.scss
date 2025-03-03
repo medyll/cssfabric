@@ -1,3 +1,4 @@
+@use "sass:map";
 
 // load scss config file
 @use '../../_utils';
@@ -8,7 +9,7 @@ $config: cssfabric-config.$cssfabric-config;
 
 // load general config variables
 // media queries sizes, in rem
-$_media_quey_sizes: map-get($config, media_quey_sizes);
+$_media_quey_sizes: map.get($config, media_quey_sizes);
 
 // builder responsive  
 $min_value: 0;

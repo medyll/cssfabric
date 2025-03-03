@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "sass:map";
 @use "sass:math";
 @use '../../_utils';
@@ -99,7 +100,7 @@ $densities-ratios : cssfabric-config.$densities-ratios;
         $computed_value: $css_size_value + " solid var(--theme-color-border)";
 
         #{raw_size_tag_rule($grid_size_value)} &-#{$grid_size_value} {
-          @if length($rule) == 4 {
+          @if list.length($rule) == 4 {
             #{$fabric_box_position_prop}: #{$computed_value};
           } @else {
 
@@ -135,7 +136,7 @@ $densities-ratios : cssfabric-config.$densities-ratios;
         $computed_value: var(--box-density-#{$grid_size_value});
 
         #{raw_size_tag_rule($grid_size_value)} &-#{$grid_size_value} {
-          @if length($rule) == 4 {
+          @if list.length($rule) == 4 {
             #{$fabric_box_position_prop}: #{$computed_value};
           } @else {
             @each $rule_value in $rule {

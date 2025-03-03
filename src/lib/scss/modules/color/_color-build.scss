@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:map";
 @use 'color-vars';
 @use "sass:math";
@@ -8,13 +9,13 @@
 $color-config: color-vars.$color-config;
 
 // COLOR TYPES
-$color-types-config: map-get($color-config, color-types-config);
+$color-types-config: map.get($color-config, color-types-config);
 // COLOR SCHEMES
-$color-schemes: map-get($color-config, scheme) !default;
+$color-schemes: map.get($color-config, scheme) !default;
 // COLOR PALETTE
-$color-palette: map-get($color-config, palette) !default;
+$color-palette: map.get($color-config, palette) !default;
 // COLOR THEME 
-$color-theme: map-get($color-config, theme) !default;
+$color-theme: map.get($color-config, theme) !default;
 
 
 // GRAYS
@@ -28,11 +29,11 @@ $gray-schemes: utils.getGraySteps($color-gray-steps, $color-gray-start, $color-g
 
 
 @function text-contrast($n) {
-  $color-brightness: round((red($n) * 299) + (green($n) * 587) +  math.div(blue(#ffffff) * 114, 1000));
-  $light-color: round((red(#ffffff) * 299) + (green(#ffffff) * 587) + math.div(blue(#ffffff) * 114, 1000));
+  $color-brightness: math.round((color.red($n) * 299) + (color.green($n) * 587) +  math.div(color.blue(#ffffff) * 114, 1000));
+  $light-color: math.round((color.red(#ffffff) * 299) + (color.green(#ffffff) * 587) + math.div(color.blue(#ffffff) * 114, 1000));
   $color: black;
 
-  @if abs($color-brightness) < math.div($light-color,2) {
+  @if math.abs($color-brightness) < math.div($light-color,2) {
     $color: white;
   }
 

@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "sass:map";
 @use "sass:math";
 
@@ -167,7 +168,7 @@ $cssfabric-config: (
 
   @for $i from 0 through $steps {
 
-    $color: mix($gray-end, $gray-start, math.div($i , $steps) * 100%);
+    $color: color.mix($gray-end, $gray-start, math.div($i , $steps) * 100%);
 
     $gray-schemes: map.set($gray-schemes, #{($i+1) * 100}, $color);
   }

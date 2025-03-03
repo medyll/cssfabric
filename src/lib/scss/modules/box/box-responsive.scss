@@ -1,3 +1,4 @@
+@use "sass:map";
 
 @use '../../_utils';
 @use "_box-build" as build; 
@@ -5,7 +6,7 @@
 // load general config variables
 $config: cssfabric-config.$cssfabric-config;
 
-$_media_quey_sizes: map-get($config, media_quey_sizes);
+$_media_quey_sizes: map.get($config, media_quey_sizes);
 
 // responsive builder here
 $min_value: 0;

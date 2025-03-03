@@ -1,3 +1,4 @@
+@use "sass:list";
 @use "sass:selector";
 
 @mixin width($width: auto, $min: auto, $max: auto) {
@@ -15,7 +16,7 @@
     @if $width {
         width: $width;
     }
-    @for $i from 0 to length($selectors) {
+    @for $i from 0 to list.length($selectors) {
     }
 }
 @mixin height($width: auto, $min: auto, $max: auto) {
