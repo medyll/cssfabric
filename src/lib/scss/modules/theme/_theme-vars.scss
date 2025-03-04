@@ -1,14 +1,15 @@
-@use '../../utils' as utils;
+@use "../../utils" as utils;
 @use "../cssfabric-config";
 
-
-
 $_declinations-config: (primary, secondary, tertiary);
-$themeii : (primary: cssfabric-config.$theme-color-primary, secondary:cssfabric-config.$theme-color-secondary, tertiary:cssfabric-config.$theme-color-tertiary);
+$themeii: (
+        primary: cssfabric-config.$theme-color-primary,
+        secondary: cssfabric-config.$theme-color-secondary,
+        tertiary: cssfabric-config.$theme-color-tertiary
+);
 
 $_theme-levels: (light lighter dark darker complement invert);
 $_theme-properties-apply: (text, bg, border);
-
 
 $theme-metadata: (
         "title": "theme",
@@ -16,8 +17,11 @@ $theme-metadata: (
 );
 
 $_theme-levels-obj: (_ light lighter dark darker complement invert);
-$_declinations-config-object: (primary:$_theme-levels-obj, secondary:$_theme-levels-obj, tertiary:$_theme-levels-obj);
-
+$_declinations-config-object: (
+        primary: $_theme-levels-obj,
+        secondary: $_theme-levels-obj,
+        tertiary: $_theme-levels-obj
+);
 
 $theme-config: (
         moduleName: theme,
@@ -28,19 +32,21 @@ $theme-config: (
                 tertiary: cssfabric-config.$theme-color-tertiary,
                 foreground: cssfabric-config.$theme-color-foreground,
                 background: cssfabric-config.$theme-color-background,
-                paper: cssfabric-config.$theme-color-paper,
+                paper: cssfabric-config.$theme-color-paper
         ),
-        declinations-config:$_declinations-config,
-        theme-level-config:$_theme-levels,
-        theme-properties-apply-config:$_theme-properties-apply,
+        declinations-config: $_declinations-config,
+        theme-level-config: $_theme-levels,
+        theme-properties-apply-config: $_theme-properties-apply,
         // primary secondary tertiary
         color: utils.getThemeLevels($themeii, cssfabric-config.$theme-color-primary)
 );
 
-$theme-docs: (attributes:(
-        theme:(
-                tag: theme,
-                keys: $_theme-properties-apply,
-                levels: $_declinations-config-object
+$theme-docs: (
+        attributes: (
+                theme: (
+                        tag: theme,
+                        keys: $_theme-properties-apply,
+                        levels: $_declinations-config-object
+                )
         )
-));
+);

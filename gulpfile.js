@@ -1,7 +1,6 @@
 import json2md from "json2md"
 import { cssFabricSassConf } from "./cssfabric.sass.js";
-import pkg from 'glob';
-const { glob } = pkg;
+import { glob, globSync,   } from 'glob';
 import path from 'path';
 import fs from "fs-extra"
 import dartSass from 'sass';
@@ -14,8 +13,6 @@ const {
     fabricStylesDir
 } = cssFabricSassConf;
 
-
-
 const doFabric = {
     /**
      * build readme fragment from _generated json file
@@ -23,7 +20,7 @@ const doFabric = {
      * @param file_info
      * @returns {{}}
      */
-    fabricReadmeFile: (file_content) => {
+    fabricReadmeFile: (file_content) => { 
         // name of the module, from path
         const fileContent = file_content || {}
         const moduleList = fileContent?.cssfabric?.modules;
@@ -122,7 +119,7 @@ const doFabric = {
 
                                 }
 
-                                // if {}[] ..... ?
+                                // if {}[]
                                 if (attributeValue.levels.every(x => typeof x === 'object' && !Array.isArray(x))) {
                                     collect.levels = `${labelIn}levels${labelOut}: ${eol}${attributeValue.levels.map((x) => x.join('&nbsp;&nbsp;')).join(eol)}`;
                                 }
@@ -269,52 +266,58 @@ const doFabric = {
             .replace("/", "");
 
         return `|{"module_path" : "${module_path}","module_filename" : "${module_filename}","module_name" : "${module_name}"}`;
-    }
-}
+    },
 
-/**
- * list a directory using a glob pattern : glob.sync(pattern, options)
- * convert each file content to a string with append and prepend options
- * use doFabric.fabricSassToJson to cast file content to json
- * 
- */
-function task_varsExport_replacement() {
-    const listFiles = glob.sync(fabricModuleDir + "/**/_*-vars.scss");
-    const cleanFiles = listFiles.map(filePath => filePath
-        .substring(filePath.lastIndexOf("modules/"))
-        .split("\\")
-        ?.pop()
-        .split(".")?.[0]
-        .replace("modules/", "")).join('|');
+    /**
+     * list a directory using a glob pattern : glob.sync(pattern, options)
+     * convert each file content to a string with append and prepend options
+     * use doFabric.fabricSassToJson to cast file content to json
+     * 
+     */
+    task_varsExport_replacement: async function() {
+        const listFiles = globSync(fabricModuleDir + "/**/_*-vars.scss", {
+            nodir: true,
+            pwd: process.cwd(),
+            absolute: true
+        });
+        const cleanFiles = listFiles.map(filePath => {
+            const relativePath = path.relative(fabricModuleDir, filePath);
+            const modulePath = path.dirname(relativePath);
+            const moduleName = path.basename(filePath, '.scss');
 
-    let scssContent = doFabric.fabricSassToJson({ file_content: { obj: cleanFiles }, file_info: '' });
-    // write scss to file
-    fs.writeFileSync('temp.scss', scssContent,{ flag: 'w' });
+            return `${modulePath}/${moduleName}`;
+        }).join('|');
 
-    const comp = dartSass.compile('temp.scss')
-    fs.removeSync('temp.scss');
-    const content = comp.css;
-    const start = '{"cssfabric":{"modules":{';
-    const end = " }}}";
 
-    const regexIn = /\/\*\! json-encode: {/gm;
-    const regexOut = /} \*\//gm;
+        let scssContent = doFabric.fabricSassToJson({ file_content: { obj: cleanFiles }, file_info: '' });
+        // write scss to file
+        fs.writeFileSync('temp.scss', scssContent,{ flag: 'w' });
 
-    let exp = content
-        .replace(regexIn, "")
-        .replace(regexOut, ",")
-        .replace(/,\s*$/, "");
+        const comp = dartSass.compile('temp.scss')
+        fs.removeSync('temp.scss');
+        const content = comp.css;
+        const start = '{"cssfabric":{"modules":{';
+        const end = " }}}";
 
-    let fileContents = `${start}${exp}${end}`
+        const regexIn = /\/\*\! json-encode: {/gm;
+        const regexOut = /} \*\//gm;
 
-    // write to fabricGeneratedDir with fileName cssFabric.vars.json
-    fs.ensureFileSync(fabricGeneratedDir + '/cssFabric.vars.json');
-    fs.writeFileSync(fabricGeneratedDir + '/cssFabric.vars.json', fileContents, { flag: 'w' });
+        let exp = content
+            .replace(regexIn, "")
+            .replace(regexOut, ",")
+            .replace(/,\s*$/, "");
+
+        let fileContents = `${start}${exp}${end}`
+
+        // write to fabricGeneratedDir with fileName cssFabric.vars.json
+        fs.ensureFileSync(fabricGeneratedDir + '/cssFabric.vars.json');
+        fs.writeFileSync(fabricGeneratedDir + '/cssFabric.vars.json', fileContents, { flag: 'w' });
+    },
 }
 
 export function task_readme_new(cb) {
     // reads cssFabric.vars.json in fabricGeneratedDir   
-    glob.sync(fabricGeneratedDir + "/cssFabric.vars.json").forEach(filePath => {
+    globSync(fabricGeneratedDir + "/cssFabric.vars.json").forEach(filePath => {
 
         let file_content = fs.readFileSync(filePath, "utf8");
 
@@ -331,7 +334,7 @@ async function transformSass2css() {
     fs.ensureDirSync(fabricStylesDir);
     // list all files from  `${fabricModuleDir}/**/*.scss`
     // exclusion pattern : exclude `**/*css-fabric*` and exclude `**/*_*` 
-    const files = glob.sync(`${fabricModuleDir}/**/*.scss`, { ignore: [`**/*css-fabric*`, `**/*!(_)*`], nodir: true });
+    const files = globSync(`${fabricModuleDir}/**/*.scss`, { ignore: [`**/*css-fabric*`, `**/*!(_)*`], nodir: true });
 
     console.log('List files')  
     // for each file
@@ -376,7 +379,7 @@ async function transformSass2css() {
     // files have now been writed down in the /lib folder
     // we can now merge them into 3 files : cssfabric.css, cssfabric.min.css, cssfabric.responsive.css
     // and cssfabric.responsive.min.css
-    const libFiles = glob.sync(`${fabricStylesDir}/**/*.css`);
+    const libFiles = globSync(`${fabricStylesDir}/**/*.css`);
     const fileCollector = { normalPattern: [], miniFiedPattern: [], responsivePattern: [], responsiveMinPattern: [] };
     const fileNames = { normalPattern: 'cssfabric.css', miniFiedPattern: 'cssfabric.min.css', responsivePattern: 'cssfabric.responsive.css', responsiveMinPattern: 'cssfabric.responsive.min.css' };
 
@@ -412,14 +415,14 @@ async function transformSass2css() {
 
 
 export function watchSass() {
-doIt()
+    doIt()
     const watcher = chokidar.watch(fabricModuleDir + "/**/*.scss", {
         ignored: /(^|[\/\\])temp\.scss$/, // ignore temp.scss
         persistent: true,
     });
 
 
-        console.log('watchSass, listening for changes')
+    console.log('watchSass, listening for changes')
 
     watcher
         .on('start', (path) => doIt())
@@ -428,11 +431,10 @@ doIt()
 
     function doIt() {
         transformSass2css();
-        task_varsExport_replacement();
+        doFabric.task_varsExport_replacement();
         task_readme_new();
     }
 
 }
 
- watchSass(); 
- 
+watchSass();

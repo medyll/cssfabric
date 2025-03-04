@@ -18,19 +18,19 @@ This is also a learning point about gulp, webpack, packages and friends.
 
 | modules |     |
 | ------- | --- |
-| animation | cssfabric simplest animation module |
-| base | cssfabric base config variables |
-| box | cssfabric box module to set heights, paddings, margins and shadows on all html elements |
-| color | cssfabric color system: its about colors |
-| flex | cssfabric flex system module |
-| grid | cssfabric flex grid system module |
-| menu | cssfabric menu module to set menu style |
-| overflow | cssfabric overflow module to set overflow styles on all html elements |
-| scale | cssfabric scale module to set dimensions and ratios on all html elements |
-| table | cssfabric table module to set different table styles |
-| text | cssfabric text module to set text style on all html elements |
-| theme |  |
 | zindex | cssfabric zindex module to set z-index on all html elements |
+| theme |  |
+| text | cssfabric text module to set text style on all html elements |
+| table | cssfabric table module to set different table styles |
+| scale | cssfabric scale module to set dimensions and ratios on all html elements |
+| overflow | cssfabric overflow module to set overflow styles on all html elements |
+| menu | cssfabric menu module to set menu style |
+| grid | cssfabric flex grid system module |
+| flex | cssfabric flex system module |
+| color | cssfabric color system: its about colors |
+| box | cssfabric box module to set heights, paddings, margins and shadows on all html elements |
+| base | cssfabric base config variables |
+| animation | cssfabric simplest animation module |
 
 
 <br/>
@@ -41,6 +41,183 @@ This is also a learning point about gulp, webpack, packages and friends.
 <br/>
 
 ### More details
+
+---
+
+#### <strong>module theme</strong>
+
+#### [theme]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  theme
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: text&nbsp;&nbsp;bg&nbsp;&nbsp;border
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>level keys</b></span>:<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- primary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- secondary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- tertiary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert
+
+---
+
+#### <strong>module text</strong>
+
+#### [text-transform]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: cap&nbsp;&nbsp;up&nbsp;&nbsp;low&nbsp;&nbsp;none&nbsp;&nbsp;full
+
+#### [font-weight]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
+
+#### [text-align]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: l&nbsp;&nbsp;r&nbsp;&nbsp;center&nbsp;&nbsp;justify
+
+#### [text-shadow]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text-shad
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: palette
+
+---
+
+#### <strong>module table</strong>
+
+#### [table]
+
+
+- is a table
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  table
+
+---
+
+#### <strong>module scale</strong>
+
+#### [scale]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  scale
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: w&nbsp;&nbsp;h
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>level keys</b></span>:<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _size</span>: full&nbsp;&nbsp;&nbsp;&nbsp;mid&nbsp;&nbsp;&nbsp;&nbsp;quarter&nbsp;&nbsp;&nbsp;&nbsp;tiers<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _content</span>: content-max&nbsp;&nbsp;&nbsp;&nbsp;content-min<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _defined-steps</span>: 1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;&nbsp;48&nbsp;&nbsp;&nbsp;&nbsp;64<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _grid-16</span>: 1-16&nbsp;&nbsp;&nbsp;&nbsp;2-16&nbsp;&nbsp;&nbsp;&nbsp;3-16&nbsp;&nbsp;&nbsp;&nbsp;4-16&nbsp;&nbsp;&nbsp;&nbsp;5-16&nbsp;&nbsp;&nbsp;&nbsp;6-16&nbsp;&nbsp;&nbsp;&nbsp;7-16&nbsp;&nbsp;&nbsp;&nbsp;8-16&nbsp;&nbsp;&nbsp;&nbsp;9-16&nbsp;&nbsp;&nbsp;&nbsp;10-16&nbsp;&nbsp;&nbsp;&nbsp;11-16&nbsp;&nbsp;&nbsp;&nbsp;12-16&nbsp;&nbsp;&nbsp;&nbsp;13-16&nbsp;&nbsp;&nbsp;&nbsp;14-16&nbsp;&nbsp;&nbsp;&nbsp;15-16&nbsp;&nbsp;&nbsp;&nbsp;16-16
+
+---
+
+#### <strong>module overflow</strong>
+
+#### [overflow]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flow
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
+
+#### [overflowX]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flowX
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
+
+#### [overflowY]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flowY
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
+
+---
+
+#### <strong>module menu</strong>
+
+#### [menu]
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  menu
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: h&nbsp;&nbsp;v
+
+---
+
+#### <strong>module grid</strong>
+
+#### [grid]
+
+
+- a classic grid system
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  grid
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: v&nbsp;&nbsp;h
+
+#### [self]
+
+
+- grid children specific classnames
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  self
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: start&nbsp;&nbsp;end&nbsp;&nbsp;stretch
+
+---
+
+#### <strong>module flex</strong>
+
+#### [grid]
+
+
+- a classic flex grid system, and hey, it gets height !
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flex
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: v&nbsp;&nbsp;h
+
+#### [self]
+
+
+- flex children specific classnames
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  self
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: start&nbsp;&nbsp;end&nbsp;&nbsp;stretch
+
+---
+
+#### <strong>module color</strong>
+
+#### [color]
+
+
+- color for text level html elements
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  color
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
+
+#### [background-color]
+
+
+- background colors
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  bg
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
+
+#### [background-themed]
+
+
+- same as background-color, but with added contrasted color to text
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  bg-themed
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
+
+#### [border-color]
+
+
+- border colors are slightly darker to maximize surrounding effect
+
+
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  border-color
+ - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: palette&nbsp;&nbsp;gray
 
 ---
 
@@ -89,180 +266,3 @@ This is also a learning point about gulp, webpack, packages and friends.
 
  - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  shad
  - <span style='width:80px;display:inline-block;overflow:visible'><b>level keys</b></span>:<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _</span>: 2&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;32
-
----
-
-#### <strong>module color</strong>
-
-#### [color]
-
-
-- color for text level html elements
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  color
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
-
-#### [background-color]
-
-
-- background colors
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  bg
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
-
-#### [background-themed]
-
-
-- same as background-color, but with added contrasted color to text
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  bg-themed
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: scheme&nbsp;&nbsp;palette&nbsp;&nbsp;gray
-
-#### [border-color]
-
-
-- border colors are slightly darker to maximize surrounding effect
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  border-color
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: palette&nbsp;&nbsp;gray
-
----
-
-#### <strong>module flex</strong>
-
-#### [grid]
-
-
-- a classic flex grid system, and hey, it gets height !
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flex
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: v&nbsp;&nbsp;h
-
-#### [self]
-
-
-- flex children specific classnames
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  self
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: start&nbsp;&nbsp;end&nbsp;&nbsp;stretch
-
----
-
-#### <strong>module grid</strong>
-
-#### [grid]
-
-
-- a classic grid system
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  grid
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: v&nbsp;&nbsp;h
-
-#### [self]
-
-
-- grid children specific classnames
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  self
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: start&nbsp;&nbsp;end&nbsp;&nbsp;stretch
-
----
-
-#### <strong>module menu</strong>
-
-#### [menu]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  menu
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: h&nbsp;&nbsp;v
-
----
-
-#### <strong>module overflow</strong>
-
-#### [overflow]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flow
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
-
-#### [overflowX]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flowX
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
-
-#### [overflowY]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  flowY
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: visible&nbsp;&nbsp;hidden&nbsp;&nbsp;clip&nbsp;&nbsp;scroll&nbsp;&nbsp;auto
-
----
-
-#### <strong>module scale</strong>
-
-#### [scale]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  scale
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: w&nbsp;&nbsp;h
- - <span style='width:80px;display:inline-block;overflow:visible'><b>level keys</b></span>:<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _size</span>: full&nbsp;&nbsp;&nbsp;&nbsp;mid&nbsp;&nbsp;&nbsp;&nbsp;quarter&nbsp;&nbsp;&nbsp;&nbsp;tiers<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _content</span>: content-max&nbsp;&nbsp;&nbsp;&nbsp;content-min<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _defined-steps</span>: 1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;16&nbsp;&nbsp;&nbsp;&nbsp;24&nbsp;&nbsp;&nbsp;&nbsp;32&nbsp;&nbsp;&nbsp;&nbsp;48&nbsp;&nbsp;&nbsp;&nbsp;64<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- _grid-16</span>: 1-16&nbsp;&nbsp;&nbsp;&nbsp;2-16&nbsp;&nbsp;&nbsp;&nbsp;3-16&nbsp;&nbsp;&nbsp;&nbsp;4-16&nbsp;&nbsp;&nbsp;&nbsp;5-16&nbsp;&nbsp;&nbsp;&nbsp;6-16&nbsp;&nbsp;&nbsp;&nbsp;7-16&nbsp;&nbsp;&nbsp;&nbsp;8-16&nbsp;&nbsp;&nbsp;&nbsp;9-16&nbsp;&nbsp;&nbsp;&nbsp;10-16&nbsp;&nbsp;&nbsp;&nbsp;11-16&nbsp;&nbsp;&nbsp;&nbsp;12-16&nbsp;&nbsp;&nbsp;&nbsp;13-16&nbsp;&nbsp;&nbsp;&nbsp;14-16&nbsp;&nbsp;&nbsp;&nbsp;15-16&nbsp;&nbsp;&nbsp;&nbsp;16-16
-
----
-
-#### <strong>module table</strong>
-
-#### [table]
-
-
-- is a table
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  table
-
----
-
-#### <strong>module text</strong>
-
-#### [text-transform]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: cap&nbsp;&nbsp;up&nbsp;&nbsp;low&nbsp;&nbsp;none&nbsp;&nbsp;full
-
-#### [font-weight]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
-
-#### [text-align]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: l&nbsp;&nbsp;r&nbsp;&nbsp;center&nbsp;&nbsp;justify
-
-#### [text-shadow]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  text-shad
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: palette
-
----
-
-#### <strong>module theme</strong>
-
-#### [theme]
-
-
- - <span style='width:80px;display:inline-block;overflow:visible'><b>shorthand</b></span>:  theme
- - <span style='width:80px;display:inline-block;overflow:visible'><b>keys</b></span>: text&nbsp;&nbsp;bg&nbsp;&nbsp;border
- - <span style='width:80px;display:inline-block;overflow:visible'><b>level keys</b></span>:<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- primary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- secondary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert<br/><span style='margin-left:20px;width:80px;display:inline-block;overflow:visible'>- tertiary</span>: _&nbsp;&nbsp;&nbsp;&nbsp;light&nbsp;&nbsp;&nbsp;&nbsp;lighter&nbsp;&nbsp;&nbsp;&nbsp;dark&nbsp;&nbsp;&nbsp;&nbsp;darker&nbsp;&nbsp;&nbsp;&nbsp;complement&nbsp;&nbsp;&nbsp;&nbsp;invert
