@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1-beta.7](https://github.com/medyll/cssfabric/compare/v0.2.1-beta.6...v0.2.1-beta.7) (2025-03-04)
+
+
+### Features
+
+* Ajout d'un script de migration SCSS et mise à jour des dépendances dans package.json ([356a12f](https://github.com/medyll/cssfabric/commit/356a12f45878fdeefbb508d30ca71e9c9d2b0ad1))
+* Ajout de nouveaux fichiers CSS et mise à jour des chemins dans la configuration SCSS ([fb2d085](https://github.com/medyll/cssfabric/commit/fb2d085ff7e31dac4d15ecd28da6b3655dd06d0b))
+* Mise à jour des fichiers SCSS pour utiliser les nouvelles fonctions de Sass et ajout de la dépendance 'glob' dans package.json ([e16e833](https://github.com/medyll/cssfabric/commit/e16e8331fcc1a616e38df46306fa09c921d9d704))
+
 ### [0.2.1-beta.6](https://github.com/medyll/cssfabric/compare/v0.2.1-beta.5...v0.2.1-beta.6) (2024-03-06)
 
 
