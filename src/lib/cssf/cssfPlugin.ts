@@ -10,7 +10,6 @@ export const myPlugin = () => (root: postcss.Root) => {
 
 		const method = cssfClass?.[parent];
 		if (method) {
-			console.log(method(decl)?.[prop](value));
 		}
 
 		//decl.prop = 'my-fed-' + decl.prop;
@@ -40,5 +39,4 @@ cssfProcessor
 		`
 	)
 	.then((result) => {
-		console.log(result.css);
 	});

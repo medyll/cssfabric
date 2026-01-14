@@ -37,9 +37,7 @@ export class CssFabricVariations {
 			value.forEach((element: string) => {
 				// if enclosed by ()
 				const enclosedValue = element.match(/\((.*?)\)/)?.[1];
-				if (enclosedValue) {
-					console.log('will be root:', enclosedValue);
-				}
+				 
 				// if contains cssFab.
 				let modelData: Record<string, any> = {
 					[fragmentKey]: { [firstKey]: [], ...remainingVariations }
@@ -54,7 +52,7 @@ export class CssFabricVariations {
 					// modelData[fabTheme] = {};
 					modelData[fragmentKey][firstKey] = Object.keys(colorConfig[fabTheme] ?? {});
 					if (enclosedValue) options[firstKey] = fabTheme;
-					console.log(options);
+					
 					theme = fabTheme;
 				} else {
 					modelData[fragmentKey][firstKey] = value;
@@ -63,7 +61,7 @@ export class CssFabricVariations {
 				// create CssModel
 				const cssModel = new CssFabricVariations(modelData, options);
 				let results = cssModel.generateCss();
-				// console.log('results');
+			 
 				if (theme) {
 					output[theme] = results;
 				} else {

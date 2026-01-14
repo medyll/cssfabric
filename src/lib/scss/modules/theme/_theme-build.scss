@@ -1,10 +1,9 @@
 @use "../../_utils";
 @use "sass:color";
-@use "theme-vars";
 
 @use "sass:map";
-@use "theme-vars";
 @use "../cssfabric-config";
+@use "./_theme-vars" as theme-vars;
 
 // COLOR THEME
 $moduleNameShort: map.get(theme-vars.$theme-config, moduleNameShort);

@@ -66,7 +66,6 @@ function promptGitAdd() {
 
 function promptCommit() {
     inquirer.prompt(commitQuestions).then(({ type, message }) => {
-        console.log(`Executing git commit -m "${type}: ${message}"`);
         /* exec(`git commit -m "${type}: ${message}"`, (error) => {
             if (error) console.error(`Error executing git commit: ${error}`);
         }); */

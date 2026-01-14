@@ -1,6 +1,7 @@
+
 <script lang="ts">
 	export let name = '';
-	export let children = [];
+	export const children = [];
 	export let indent = 0;
 	export let data: Record<string, any> = {};
 
@@ -37,8 +38,4 @@
 {/if}
 
 <style>
-	h3 {
-		cursor: pointer;
-		user-select: none;
-	}
 </style>

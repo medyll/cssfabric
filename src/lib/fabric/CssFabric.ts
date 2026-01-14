@@ -109,7 +109,6 @@ export class CssFabric {
 					);
 					break;
 				default:
-					console.log('default', modelKey);
 					break;
 			}
 		});

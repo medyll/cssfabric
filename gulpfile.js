@@ -130,7 +130,7 @@ const doFabric = {
                                 nestedLevels.push(`${labelIn}level keys${labelOut}:`);
                                 Object.keys(attributeValue.levels).forEach((levelKey) => {
                                     let levelValue = attributeValue.levels[levelKey].join('&nbsp;&nbsp;&nbsp;&nbsp;')
-                                    // console.log(levelValue)
+                                    
                                     nestedLevels.push(`${labelNestedIn}${levelKey}${labelNestedOut}: ${levelValue}`);
                                 })
                                 // [].concat(...arr));
@@ -164,7 +164,7 @@ const doFabric = {
             let ret = '';
 
             if (!Array.isArray(arr)) {
-                console.log(Array.isArray(arr), { arr })
+                
             }
             if (arr.every(x => Array.isArray(x))) ret = 'arrays'
             if (arr.every(x => typeof x === 'string')) ret = 'strings'
@@ -336,7 +336,7 @@ async function transformSass2css() {
     // exclusion pattern : exclude `**/*css-fabric*` and exclude `**/*_*` 
     const files = globSync(`${fabricModuleDir}/**/*.scss`, { ignore: [`**/*css-fabric*`, `**/*!(_)*`], nodir: true });
 
-    console.log('List files')  
+    
     // for each file
     const promises = []
     files.sort((a,b)=>{
@@ -366,7 +366,7 @@ async function transformSass2css() {
 
     await Promise.all(promises);
 
-    console.log('write modules')
+   
         // normal stylesheets
     const normalPattern = ['**/*.css', '!**/*responsive*.css', '!**/*min*.css', '!**/*cssfabric*.css', '!**/*temp*.css'];
     // normal minified stylesheets
@@ -384,7 +384,7 @@ async function transformSass2css() {
     const fileNames = { normalPattern: 'cssfabric.css', miniFiedPattern: 'cssfabric.min.css', responsivePattern: 'cssfabric.responsive.css', responsiveMinPattern: 'cssfabric.responsive.min.css' };
 
     libFiles.forEach(file => {
-        //  console.log(file,normalPattern);
+        
         const fileContent = fs.readFileSync(file, 'utf8');
         const fileNotDot = file.replace('./', '');
  
@@ -400,16 +400,15 @@ async function transformSass2css() {
         if (micromatch.all(fileNotDot, responsiveMinPattern)) {
             fileCollector.responsiveMinPattern.push(fileContent);
         }
-    });
-    // console.log(fileCollector);
+    }); 
     // return;
-    console.log('write main files')
+   
     // 
     Object.keys(fileCollector).forEach(key => {
         fs.ensureDirSync(`${fabricStylesDir}/`);
         fs.writeFileSync(`${fabricStylesDir}/${fileNames[key]}`, fileCollector[key].join(''),{ flag: 'w' });
     })
-    console.log('Done')
+   
 
 }
 
@@ -422,7 +421,7 @@ export function watchSass() {
     });
 
 
-    console.log('watchSass, listening for changes')
+   
 
     watcher
         .on('start', (path) => doIt())

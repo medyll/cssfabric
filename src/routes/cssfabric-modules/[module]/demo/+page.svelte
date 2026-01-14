@@ -2,8 +2,7 @@
   export const prerender = true;
   /** @type {import('./[module]/classnames').Load} */
   export async function load({params, fetch, session, stuff}) {
-    console.log({params})
-    // console.log(params, fetch, session, stuff);
+    
     return {
       status: 200,
       props : {

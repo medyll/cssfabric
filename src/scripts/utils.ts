@@ -1,4 +1,4 @@
-import cssfabric from '../lib/scripts/cssfabric';
+import cssfabric from '../lib/legacy/scripts/cssfabric.js';
 
 export const urlModule  = 'cssfabric-modules';
 const pageDocsName      = 'docs';

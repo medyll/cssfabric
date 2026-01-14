@@ -200,13 +200,11 @@ class CSSFormalSyntaxDecoder {
 		const fragment = fragmentPiece[fragmentTitle];
 
 		let out: Record<string, any> = {};
-		//
-		// console.log('----------------------------------', key, fragmentTitle);
+		// 
 		Object.keys(fragment?.fabric).forEach((fabricMode) => {
 			switch (fabricMode) {
 				case 'classNames':
-					let classNames = this.applyClassNames(fragment, fabricMode);
-					//console.log('followUp', followUp);
+					let classNames = this.applyClassNames(fragment, fabricMode); 
 
 					if (Object.keys(classNames.classNames).length > 0) {
 						// result = { ...result, [fragmentTitle]: { classNames: classNames.classNames } };
@@ -214,9 +212,7 @@ class CSSFormalSyntaxDecoder {
 					}
 
 					break;
-				case 'vertical':
-					/* console.log(fabricMode);
-					console.log(fragment.fabric); */
+				case 'vertical': 
 					break;
 				case 'variations':
 					const ouh = { [fragmentTitle]: fragment.fabric };
@@ -230,8 +226,7 @@ class CSSFormalSyntaxDecoder {
 					break;
 			}
 		});
-
-		// console.log(result);
+ 
 		return result;
 	}
 
@@ -239,8 +234,7 @@ class CSSFormalSyntaxDecoder {
 		let out: Record<string, any> = { ...cssBlock };
 		const mdl = Object.keys(cssBlock)[0];
 
-		Object.entries(cssBlock[mdl].variations).forEach(([key, value]) => {
-			// console.log(value);
+		Object.entries(cssBlock[mdl].variations).forEach(([key, value]) => { 
 			out[mdl].variations[key] = value.split('|').map((v) => v.trim());
 		});
 		return out;
@@ -253,10 +247,10 @@ class CSSFormalSyntaxDecoder {
 		let result: Record<string, any> = {};
 		const fragmentTitle = Object.keys(fragment.fabric[fabricMode])[0];
 		const fragmentPiece = fragment.fabric[fabricMode];
-		// console.log(fragmentTitle);
+		 
 		const distributionType = DistributionType.detectDistributionType(fragment, fabricMode);
 
-		//console.log(fragmentPiece);
+		 
 		Object.keys(fragmentPiece).forEach((fabricType) => {
 			//const distributionType = DistributionType.detectDistributionType(fragment, fabricType);
 			let syntax = fragment.syntax;
@@ -293,7 +287,6 @@ class CSSFormalSyntaxDecoder {
 								};
 							}
 							if (SyntaxDecode.hasProgression(fabricTitle, syntaxKey)) {
-								//console.log(SyntaxDecode.generateValues(fabricTitle, syntaxKey));
 
 								generatedValues = {};
 
@@ -365,11 +358,9 @@ export class CSSProperties {
 		followUp: string[] = []
 	): Record<string, any> {
 		let out: Record<string, any> = {};
-		for (let key in cssProperties) {
-			// if (key == 'box') console.log(key);
+		for (let key in cssProperties) { 
 			if (this.chkValidity(cssProperties[key]) && cssProperties.hasOwnProperty(key)) {
-				key = camelToUnderscore(key);
-				if (key == 'box') console.log(key, parent);
+				key = camelToUnderscore(key); 
 
 				const element = cssProperties[key];
 				const elementTitle = Object.keys(cssProperties)[0];
@@ -398,29 +389,19 @@ export class CSSProperties {
 						//followUp = '';
 					}
 				}
-			} else {
-				// console.log(key);
-				//console.log('done', followUp);
-				// followUp += key;
-			}
-			//console.log('done', followUp);
+			} else { 
+			} 
 			parent = '';
 			// followUp = '';
 		}
 		return out;
 	}
 
-	public generateCSS(): Record<string, any> {
-		// console.log('-----------------------------------------------------------------------');
-		// console.log(this.cssProperties);
-		console.log('-----------------------------------------------------------------------');
+	public generateCSS(): Record<string, any> { 
 		return this.recursiveFabricSearch(this.cssProperties);
 	}
 }
-
-/* const cssF = cssP.generateCSS();
-console.log(cssF); */
-// console.log(JSON.stringify(cssF, null, 4));
+ 
 
 function modifyObject(obj: Record<string, any>, filepath: string) {
 	for (let key in obj) {

@@ -41,13 +41,10 @@ const unInstallSchema = {
 var run = function (cmd) {
   var child = exec(cmd, function (error, stdout, stderr) {
     if (stderr !== null) {
-      console.log("" + stderr);
     }
     if (stdout !== null) {
-      console.log("" + stdout);
     }
     if (error !== null) {
-      console.log("" + error);
     }
   });
 };
@@ -55,45 +52,7 @@ var run = function (cmd) {
 /** import cssfabric files to .cssfabric */
 export const install = async () => {
 
- /*  if (fsx.existsSync("node_modules/@medyll/cssfabric")) {
-    //run("ls node_modules/@medyll/cssfabric");
-    console.log('found nodemodules')
-  }else{
-    console.error('Missing node_modules, exiting');
-    process.exit(1); 
-  }
-  prompt.start();
 
-  const { install, gitIgnore } = await prompt.get(installSchema);
-
-  if (install === "Y") {
-
-    await installCssFiles();
-    await installScssFiles();
-  } else {
-    console.log(colors.yellow("-- skipping the cssfabric directory import"));
-  }
-
-  if (gitIgnore === "Y") {
-    fsx.ensureFile(".gitignore");
-    const content = fsx.readFileSync(".gitignore", {
-      encoding: "utf8",
-    });
-
-    if (!content.includes(".cssfabric")) {
-      fsx
-        .appendFile(".gitignore", "\n#cssfabric directory \n.cssfabric")
-        .then(() => {
-          console.log(colors.green(".gitignore directive successfully added"));
-        });
-    } else {
-      console.log(
-        colors.yellow(
-          "-- skipping : the .gitignore file already contain a .cssfabric directive"
-        )
-      );
-    }
-  } */
 };
 
 /** uninstall .cssfabric files */
@@ -107,11 +66,9 @@ export const uninstall = async () => {
 
 const installCssFiles = async () => {
   try {
-    await fsx.copy("./src/lib/styles", "./.cssfabric/styles/");
-    console.log(colors.green("cssfabric css files were successfully imported"));
+    await fsx.copy("./src/lib/styles", "./.cssfabric/styles/"); 
   } catch (err) {
-    console.error(err);
-    console.log(colors.red("An error occurred while copying the css files"));
+    console.error(err); 
     console.error("exiting");
     process.exit(1);
   }
@@ -120,11 +77,8 @@ const installCssFiles = async () => {
 const installScssFiles = async () => {
   try {
     await fsx.copy("./src/cssfabric/modules", "./.cssfabric/modules");
-    console.log(
-      colors.green("cssfabric scss files were successfully imported")
-    );
-  } catch (err) {
-    console.log(colors.red("An error occurred while copying the scss files"));
+   
+  } catch (err) { 
     console.error("exiting");
     process.exit(1);
   }

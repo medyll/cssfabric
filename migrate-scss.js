@@ -14,7 +14,7 @@ async function migrateScssFiles() {
       }).then(resolve).catch(reject); 
     });
 
-    console.log(files)
+
 
     for (const file of files) {
       const command = `sass-migrator module --migrate-deps ${file}`;
@@ -28,8 +28,7 @@ async function migrateScssFiles() {
           console.error(`Erreur pour ${file}: ${stderr}`);
           return;
         }
-
-        console.log(`Résultat pour ${file}: ${stdout}`);
+        
       });
     }
   } catch (error) {

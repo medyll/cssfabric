@@ -75,7 +75,7 @@ class FileProcessor {
 			} else {
 				exportString += `export { default as ${moduleName} } from '${this.pathAlias}${path}';\n`;
 			}
-			console.log('exported', moduleName);
+			
 		});
 		fsx.writeFileSync(`${this.path}/index.ts`, exportString);
 	}

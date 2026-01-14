@@ -4,8 +4,8 @@
 </script>
 <script lang="ts">
 
-  import {fabricNavigation} from '../../scripts/utils';
-  import cssfabric from '../../lib/scripts/cssfabric';
+  import {fabricNavigation} from '../../scripts/utils.js';
+  import cssfabric from '../../lib/legacy/scripts/cssfabric.js';
   import HeaderSiteTitle from '../../components/HeaderSiteTitle.svelte';
 
   export let moduleTag  = '';

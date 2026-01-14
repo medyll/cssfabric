@@ -5,9 +5,7 @@
 <script context="module" lang="ts">
   export const prerender = true;
   /** @type {import('./modules/[module]/[page]').Load} */
-  export async function load({params, fetch, session, stuff}) {
-    console.log(params)
-    // console.log(params, fetch, session, stuff);
+  export async function load({params, fetch, session, stuff}) { 
     return {
       status: 200,
       props : {
@@ -19,8 +17,8 @@
 </script>
 
 <script lang="ts">
-  import cssfabric from '../../../lib/scripts/cssfabric';
-  import {fabricNavigation} from '../../../scripts/utils';
+  import cssfabric from '../../../lib/legacy/scripts/cssfabric.js';
+  import {fabricNavigation} from '../../../scripts/utils.js';
   import InnerMenu from '../../../components/InnerMenu.svelte';
   import SubHeader from '../../../components/SubHeader.svelte';
   import Header from '../../../components/Header.svelte';
@@ -50,17 +48,17 @@
             <ul class={"menu-xl-h menu-v menu-small shad-8"}>
                 <li class={(modulePage==='demo')? 'active':''}>
                     <a href={fabricNavigation.getModuleDemoPage(moduleTag)}>
-                        <a>Demo</a>
+                         Demo 
                     </a>
                 </li>
                 <li class={(modulePage==='classnames')? 'active':''}>
                     <a href={fabricNavigation.getModuleClassNamesPage(moduleTag)}>
-                        <a>Classnames</a>
+                        Classnames
                     </a>
                 </li>
                 <li class={(modulePage==='docs')? 'active':''}>
                     <a href={fabricNavigation.getModuleDocsPage(moduleTag)}>
-                        <a>Docs</a>
+                        Docs
                     </a>
                 </li>
             </ul>

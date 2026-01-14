@@ -30,8 +30,7 @@ export class CssFabricExport {
 			if (err) {
 				console.error(err);
 				return;
-			}
-			console.log('File created successfully.');
+			} 
 		});
 	}
 	private createJsonModel() {
@@ -40,8 +39,7 @@ export class CssFabricExport {
 			if (err) {
 				console.error(err);
 				return;
-			}
-			console.log('File created successfully.');
+			} 
 		});
 	}
 

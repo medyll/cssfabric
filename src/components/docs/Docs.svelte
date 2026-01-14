@@ -1,13 +1,12 @@
 <script lang="ts">
-  import cssfabric from '../../lib/scripts/cssfabric';
-  import utils from '../../lib/scripts/utils';
-  import {htmlUtils} from '../../utils';
+  import cssfabric from '../../lib/legacy/scripts/cssfabric.js';
+  import utils from '../../lib/legacy/scripts/utils.js';
+  import {htmlUtils} from '../../utils.js';
   import 'svelte-highlight/styles/github.css';
 
   export let module      = '';
   const moduleAttributes = cssfabric.getModuleDocsAttributes(module);
 
-  //$: console.log({module, moduleAttributes});
 
   let toParseKeys =
         ['keys',
@@ -18,8 +17,7 @@
 
   function tre(part: any) {
     
-    // if object, if array !!!
-    // console.log(part)
+    // if object, if array !!! 
     let out: any,
         levelValues: any;
     

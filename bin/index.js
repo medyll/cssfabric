@@ -14,14 +14,8 @@ if (args.length < 1) {
 
 const command = args?.[0];
 
-console.log(import.meta.url);
-/* var filename = path.basename(__filename);
-console.log(filename); */
- 
 
-console.log(colors.green("-----------------------------"));
-console.log(colors.green("- cssfabric installer script "));
-console.log(colors.green("-----------------------------"));
+ 
 switch (command) {
   case "--install":
   case "--install-css":

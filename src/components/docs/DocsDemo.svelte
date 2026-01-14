@@ -1,7 +1,7 @@
 <script lang='ts'>
 
 
-  import cssfabric from '../../lib/scripts/cssfabric';
+  import cssfabric from '../../lib/legacy/scripts/cssfabric.js';
   import ProxyDsp from '../demo/proxy/ProxyDsp.svelte';
 
   export let module      = '';

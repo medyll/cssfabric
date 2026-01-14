@@ -6,7 +6,6 @@
   import {fabricNavigation} from '../scripts/utils.js';
   import github from "svelte-highlight/styles/github";
   const cssfabricModules = fabricNavigation.getActiveLinks();
-  $: console.log({cssfabricModules});
 </script>
 <svelte:head>
     <title>cssFabric home</title>
