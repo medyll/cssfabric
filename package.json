@@ -1,7 +1,7 @@
 {
 	"name": "@medyll/cssfabric",
 	"scope": "@medyll",
-	"version": "0.2.1-beta.9",
+	"version": "0.2.1-beta.10",
 	"description": "fabric some css. Get pure and simple utility classes. Use the cssf file extension to go semantic. Get a preprocessor for cssf files. Generate your color scheme. Get your own css-properties.",
 	"scripts": {
 		"dev": "vite dev",
