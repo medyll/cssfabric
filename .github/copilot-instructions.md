@@ -1,53 +1,50 @@
+
 # Copilot Coding Agent Instructions for @medyll/cssfabric
 
 ## Project Overview
-- **@medyll/cssfabric** is a CSS utility framework inspired by Tailwind, providing ready-to-use utility class names and theme support.
-- The project is Svelte-based, but the CSS utilities are framework-agnostic and can be used in any frontend stack.
-- Major directories:
-  - `src/` — Svelte app, utilities, and components
-  - `src/lib/legacy/scripts/` — Core logic for CSS module generation and utilities
+- **@medyll/cssfabric** is a Svelte-based CSS utility framework inspired by Tailwind, providing utility class names, theme support, and dynamic module documentation. CSS utilities are framework-agnostic and usable in any frontend stack.
+- Key directories:
+  - `src/` — Svelte app, utilities, components, and navigation logic
+  - `src/lib/legacy/scripts/` — Core CSS module generation and legacy utilities
   - `src/lib/cssf/` — Advanced CSS logic, mixins, and documentation
-  - `src/components/` — Svelte UI components and documentation views
-  - `src/routes/` — SvelteKit routes, including module documentation and demos
-  - `lib/css/` — Built CSS files (minified, responsive, etc.)
+  - `src/components/` — Svelte UI and documentation components
+  - `src/routes/` — SvelteKit routes for module docs/demos
+  - `lib/css/`, `style/`, `styles/` — Built CSS outputs
 
 ## Architecture & Patterns
 - **CSS Module System:**
-  - Modules are defined in JS/TS and exposed via `cssfabric.getModuleList()` and related methods.
-  - Navigation and documentation pages are dynamically generated from module metadata.
-  - See `src/scripts/utils.ts` and `src/lib/legacy/scripts/cssfabric.js` for navigation and module logic.
+  - Modules are defined in JS/TS and exposed via `cssfabric.getModuleList()` and related helpers.
+  - Navigation and documentation are dynamically generated from module metadata (see `src/scripts/utils.ts`, `src/lib/legacy/scripts/cssfabric.js`).
 - **Theme Support:**
-  - Themes are set via the `data-theme` attribute on `<body>`. See main `README.md` for usage.
-  - Custom themes can be imported as SCSS files.
-- **Component Conventions:**
-  - Svelte components use utility classes from `@medyll/cssfabric` directly in markup.
-  - Navigation and documentation components (e.g., `InnerMenu.svelte`, `DocsClassNames.svelte`) use `fabricNavigation` helpers.
+  - Themes are set via the `data-theme` attribute on `<body>`; custom themes can be imported as SCSS.
+- **Component Usage:**
+  - Svelte components use utility classes directly in markup.
+  - Navigation and documentation components (e.g., `InnerMenu.svelte`, `DocsClassNames.svelte`) use `fabricNavigation` helpers for dynamic menus.
 
 ## Developer Workflows
 - **Build:**
-  - Standard Node.js build tools (Vite, Webpack, Gulp) are present. Use `npm run build` for main build.
-  - CSS is built and output to `lib/css/` and `style/`.
+  - Use `npm run build` for main build. CSS is output to `lib/css/`, `style/`, and `styles/`.
+  - Gulp, Vite, and Webpack configs are present for advanced builds.
 - **Test:**
-  - Tests are in `src/index.test.js` and `src/index.test.ts`. Run with `npm test`.
+  - Run tests in `src/index.test.js` and `src/index.test.ts` with `npm test`.
 - **Debug:**
-  - SvelteKit debugging via standard SvelteKit/Vite workflow.
-  - For CSS module debugging, inspect `src/lib/legacy/scripts/cssfabric.js` and related utils.
+  - SvelteKit debugging follows standard Vite/SvelteKit workflow.
+  - For CSS module debugging, inspect `src/lib/legacy/scripts/cssfabric.js` and related utilities.
 
 ## Project-Specific Conventions
 - **Module Navigation:**
-  - All module navigation is handled via `fabricNavigation` (see `src/scripts/utils.ts`).
+  - All navigation is handled via `fabricNavigation` (see `src/scripts/utils.ts`).
   - Module pages are under `/cssfabric-modules/[module]/` with subpages for `demo`, `docs`, and `classnames`.
 - **Class Name Generation:**
-  - Class names are generated and documented via `cssfabric.getModuleClassNames` and related helpers.
+  - Use `cssfabric.getModuleClassNames` and helpers for class name generation and documentation.
 - **SCSS/JSON Export:**
   - Use `sass-json-export` (see `src/vendor/sass-json-export/`) for exporting Sass data as JSON.
 
 ## Integration Points
 - **External:**
-  - Can be used as a dependency via npm/yarn.
-  - Integrates with SvelteKit, but CSS can be imported in any frontend project.
+  - Usable as an npm/yarn dependency; CSS can be imported in any frontend project.
 - **Extension:**
-  - VS Code extension in `src/lib/extensions/cssfabric-vscode/` (see its README for details).
+  - VS Code extension in `src/lib/extensions/cssfabric-vscode/` (see its README for usage).
 
 ## Key Files & References
 - `README.md` — Main usage and setup
@@ -55,12 +52,13 @@
 - `src/lib/legacy/scripts/cssfabric.js` — Core CSS module logic
 - `src/components/` — UI and documentation components
 - `src/routes/cssfabric-modules/` — Dynamic module documentation
-- `lib/css/` — Built CSS outputs
+- `lib/css/`, `style/`, `styles/` — Built CSS outputs
 
 ---
 
 **For AI agents:**
-- Prefer using existing navigation and module helpers for new features.
-- Follow the established Svelte + utility CSS pattern for new components.
+- Use existing navigation/module helpers for new features.
+- Follow Svelte + utility CSS patterns for new components.
 - Reference module metadata and navigation helpers for dynamic page/content generation.
-- When in doubt, check for similar patterns in `src/components/` and `src/routes/`.
+- For new documentation or UI, check patterns in `src/components/` and `src/routes/`.
+- When extending build/test/debug workflows, prefer existing scripts and configs.
